@@ -1,19 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "pricing.html",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "/pricing",
+      "dest": "/pricing.html"
+    },
+    {
+      "src": "/newsletter",
+      "dest": "/newsletter.html"
     }
-  ]
+  ],
+  "cleanUrls": true
 }
