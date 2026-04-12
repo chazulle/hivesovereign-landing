@@ -244,6 +244,35 @@
             font-size: 14px;
             color: rgba(253, 251, 247, 0.7);
         }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream-50);
+                flex-direction: column;
+                padding: calc(var(--grid-base) * 3);
+                gap: calc(var(--grid-base) * 3);
+                border-bottom: 1px solid rgba(10, 22, 40, 0.08);
+                box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1);
+            }
+            
+            .nav-links.mobile-open {
+                display: flex !important;
+            }
+            
+            .nav-links a {
+                text-align: center;
+                padding: calc(var(--grid-base) * 2);
+            }
+        }
     </style>
 </head>
 <body>
