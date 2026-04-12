@@ -277,3 +277,4 @@ Test everything here before connecting custom domain.
 ---
 
 **Ready to deploy. Run `vercel` in this directory.**
+# hivesovereign-landing
