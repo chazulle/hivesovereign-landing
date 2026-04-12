@@ -1021,263 +1021,216 @@
         </div>
     </nav>
     <!-- Hero with Clear Purpose -->
-    <section class="hero" style="padding: 100px 52px 80px;">
-        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-            <div class="section-label" style="margin-bottom: calc(var(--grid-base) * 3);">Pricing</div>
-            <h1 style="font-size: clamp(42px, 6vw, 64px); font-weight: 900; line-height: 1.1; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 4); letter-spacing: -0.02em;">
-                Intelligence briefs with<br>cryptographic proof
+    <nav>
+        <div class="nav-container">
+            <div class="logo">HIVE SOVEREIGN</div>
+            <ul class="nav-links">
+                <li><a href="#buyers">Who we serve</a></li>
+                <li><a href="#briefs">Intelligence briefs</a></li>
+                <li><a href="#api">API access</a></li>
+                <li><a href="#apply" class="nav-cta">Get started</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Article Hero -->
+    <section class="hero" style="padding: 100px 52px 40px;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <a href="/newsletter.html" style="font-family: var(--font-mono); font-size: 13px; color: var(--teal-600); text-decoration: none; letter-spacing: 0.05em;">← Back to Newsletter</a>
+            <div style="font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin: calc(var(--grid-base) * 3) 0 calc(var(--grid-base) * 2);">ISSUE #1 · JANUARY 6, 2026</div>
+            <h1 style="font-size: clamp(36px, 5vw, 48px); font-weight: 900; line-height: 1.15; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); letter-spacing: -0.02em;">
+                The Unsigned World
             </h1>
-            <p style="font-size: 22px; line-height: 1.6; color: var(--gray-600); max-width: 700px; margin: 0 auto calc(var(--grid-base) * 5);">
-                We offer two intelligence brief types and institutional API access. All intelligence comes with cryptographic signatures, QR verification, and unbroken chains of custody to primary government sources.
+            <p style="font-size: 20px; line-height: 1.6; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 4);">
+                The intelligence industry runs on unsigned data — and nobody admits it's a problem.
             </p>
-            <p style="font-size: 18px; line-height: 1.6; color: var(--navy-900); font-weight: 500;">
-                👇 Download sample briefs below to see what you're buying
-            </p>
-        </div>
-    </section>
-
-    <!-- Intelligence Briefs: Pricing + Samples Side by Side -->
-    <section class="pricing" style="background: var(--cream-50); padding: 80px 52px;">
-        <div class="section-container">
-            <div class="section-label">Intelligence Briefs</div>
-            <h2 class="section-title" style="margin-bottom: calc(var(--grid-base) * 2);">Two tiers, both cryptographically signed</h2>
-            <p style="max-width: 700px; margin-bottom: calc(var(--grid-base) * 6); color: var(--gray-600); font-size: 18px; line-height: 1.7;">
-                Standard Brief detects patterns from government filings. Comprehensive Brief confirms those patterns with multi-source triangulation. Choose based on the decision at stake.
-            </p>
-
-            <div class="pricing-grid">
-                <!-- Standard Brief -->
-                <div class="pricing-card">
-                    <div class="pricing-type">Intelligence Brief</div>
-                    <h3 class="pricing-name">Standard Brief</h3>
-                    <div class="pricing-amount">$1,500</div>
-                    <div class="pricing-period">24hr delivery</div>
-                    
-                    <div style="padding: calc(var(--grid-base) * 3) 0; margin: calc(var(--grid-base) * 3) 0;">
-                        <h4 style="font-size: 15px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2);">What's included:</h4>
-                        <ul class="pricing-features">
-                            <li>Government filing pattern detection</li>
-                            <li>Structural signal identification</li>
-                            <li>Pre-disclosure analysis window</li>
-                            <li>Cryptographic signatures (SHA-256)</li>
-                            <li>QR-verifiable proof of origin</li>
-                            <li>Compliance-defensible documentation</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="padding: calc(var(--grid-base) * 2) 0; margin-bottom: calc(var(--grid-base) * 2); border-top: 1px solid var(--gray-400); border-bottom: 1px solid var(--gray-400);">
-                        <p style="font-size: 14px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 1);">Best for:</p>
-                        <p style="font-size: 14px; line-height: 1.5; color: var(--gray-600);">
-                            Due diligence, counterparty verification, regulatory compliance checks, initial screening
-                        </p>
-                    </div>
-                    
-                    <a href="/samples/HIVE-Standard-Brief-Sample.pdf" download style="display: block; text-align: center; padding: 12px; background: var(--cream-100); color: var(--navy-900); border: 1px solid var(--gray-400); border-radius: 6px; font-size: 14px; font-weight: 500; margin-bottom: calc(var(--grid-base) * 2); text-decoration: none;">
-                        ↓ Download sample (84KB PDF)
-                    </a>
-                    
-                    <a href="/#apply" class="pricing-cta">Order Standard Brief</a>
-                </div>
-                
-                <!-- Comprehensive Brief -->
-                <div class="pricing-card featured">
-                    <div class="pricing-type">Intelligence Brief</div>
-                    <h3 class="pricing-name">Comprehensive Brief</h3>
-                    <div class="pricing-amount">$3,500</div>
-                    <div class="pricing-period">48hr delivery</div>
-                    
-                    <div style="padding: calc(var(--grid-base) * 3) 0; margin: calc(var(--grid-base) * 3) 0;">
-                        <h4 style="font-size: 15px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2);">Everything in Standard, plus:</h4>
-                        <ul class="pricing-features">
-                            <li><strong>Multi-source signal triangulation</strong></li>
-                            <li><strong>Institutional positioning intelligence</strong></li>
-                            <li><strong>Insider conviction correlation</strong></li>
-                            <li>Cross-source convergence detection</li>
-                            <li>Complete provenance audit trail</li>
-                            <li>Triple-verified validation framework</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="padding: calc(var(--grid-base) * 2) 0; margin-bottom: calc(var(--grid-base) * 2); border-top: 1px solid var(--gray-400); border-bottom: 1px solid var(--gray-400);">
-                        <p style="font-size: 14px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 1);">Best for:</p>
-                        <p style="font-size: 14px; line-height: 1.5; color: var(--gray-600);">
-                            Investment decisions, compliance-sensitive environments, LP reporting, audit-grade documentation
-                        </p>
-                    </div>
-                    
-                    <a href="/samples/HIVE-Comprehensive-Brief-Sample.pdf" download style="display: block; text-align: center; padding: 12px; background: var(--teal-500); color: var(--navy-900); border-radius: 6px; font-size: 14px; font-weight: 600; margin-bottom: calc(var(--grid-base) * 2); text-decoration: none;">
-                        ↓ Download sample (108KB PDF)
-                    </a>
-                    
-                    <a href="/#apply" class="pricing-cta">Order Comprehensive Brief</a>
-                </div>
+            <div style="padding: calc(var(--grid-base) * 2) 0; border-top: 1px solid var(--gray-400); border-bottom: 1px solid var(--gray-400);">
+                <p style="font-size: 14px; color: var(--gray-600);">Reading time: 7 minutes</p>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section: Detection vs Confirmation -->
-    <section style="background: var(--cream-100); padding: 80px 52px;">
-        <div class="section-container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: calc(var(--grid-base) * 2);">Detection vs. Confirmation</h2>
-            <p style="max-width: 700px; margin: 0 auto calc(var(--grid-base) * 6); text-align: center; color: var(--gray-600); font-size: 18px; line-height: 1.7;">
-                The key difference: Standard <strong>detects</strong> patterns from government filings. Comprehensive <strong>confirms</strong> those patterns across multiple independent sources.
-            </p>
-
-            <!-- Comparison Table -->
-            <div style="max-width: 900px; margin: 0 auto calc(var(--grid-base) * 6); background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background: var(--navy-900);">
-                            <th style="padding: calc(var(--grid-base) * 3); text-align: left; color: var(--cream-50); font-size: 16px; font-weight: 600;">Feature</th>
-                            <th style="padding: calc(var(--grid-base) * 3); text-align: center; color: var(--cream-50); font-size: 16px; font-weight: 600; width: 150px;">Standard<br><span style="font-size: 14px; opacity: 0.8;">$1,500</span></th>
-                            <th style="padding: calc(var(--grid-base) * 3); text-align: center; color: var(--teal-500); font-size: 16px; font-weight: 600; width: 150px;">Comprehensive<br><span style="font-size: 14px; opacity: 0.8;">$3,500</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid #E5E7EB;">
-                            <td style="padding: 16px 24px; font-size: 15px;">Government filing patterns</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #E5E7EB;">
-                            <td style="padding: 16px 24px; font-size: 15px;">Structural pattern recognition</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #E5E7EB;">
-                            <td style="padding: 16px 24px; font-size: 15px;">Cryptographic signatures & QR verification</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #E5E7EB;">
-                            <td style="padding: 16px 24px; font-size: 15px;">Performance analysis vs benchmark</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 20px; color: var(--teal-600);">✓</td>
-                        </tr>
-                        <tr style="border-bottom: 2px solid #E5E7EB; background: #FFFBEB;">
-                            <td colspan="3" style="padding: 12px 24px; font-size: 13px; font-weight: 600; color: var(--navy-900); text-align: center;">COMPREHENSIVE ADDS MULTI-LAYER CONFIRMATION ↓</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #E5E7EB; background: var(--cream-50);">
-                            <td style="padding: 16px 24px; font-size: 15px; font-weight: 600;">Multi-source signal triangulation</td>
-                            <td style="padding: 16px 24px; text-align: center; color: #9CA3AF;">—</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 14px; font-weight: 600; color: var(--teal-600);">✓ Triple-verified</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #E5E7EB; background: var(--cream-50);">
-                            <td style="padding: 16px 24px; font-size: 15px; font-weight: 600;">Institutional positioning intelligence</td>
-                            <td style="padding: 16px 24px; text-align: center; color: #9CA3AF;">—</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 14px; font-weight: 600; color: var(--teal-600);">✓ 14+ positions tracked</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #E5E7EB; background: var(--cream-50);">
-                            <td style="padding: 16px 24px; font-size: 15px; font-weight: 600;">Insider conviction correlation</td>
-                            <td style="padding: 16px 24px; text-align: center; color: #9CA3AF;">—</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 14px; font-weight: 600; color: var(--teal-600);">✓ Included</td>
-                        </tr>
-                        <tr style="background: var(--cream-50);">
-                            <td style="padding: 16px 24px; font-size: 15px; font-weight: 600;">Complete provenance audit trail</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 13px; color: #6B7280;">Basic chain</td>
-                            <td style="padding: 16px 24px; text-align: center; font-size: 14px; font-weight: 600; color: var(--teal-600);">✓ Full audit docs</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Decision Framework -->
-            <div style="max-width: 700px; margin: 0 auto; padding: calc(var(--grid-base) * 4); background: white; border-radius: 12px; border: 2px solid var(--navy-900);">
-                <h3 style="font-size: 20px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); text-align: center;">How to choose</h3>
-                <p style="font-size: 16px; line-height: 1.7; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 3);">
-                    <strong>Standard Brief:</strong> When you need to detect patterns from government filings for due diligence, compliance checks, or initial screening. Single-source detection with cryptographic proof.
-                </p>
-                <p style="font-size: 16px; line-height: 1.7; color: var(--gray-600);">
-                    <strong>Comprehensive Brief:</strong> When you're making high-stakes investment decisions and need multi-layer confirmation. Institutional positioning + insider signals + government filings converge to validate conviction.
-                </p>
-            </div>
+    <!-- Article Content -->
+    <article style="background: var(--cream-50); padding: 60px 52px 80px;">
+        <div style="max-width: 700px; margin: 0 auto; font-size: 18px; line-height: 1.8; color: var(--navy-900);">
             
-            <!-- PDF Download Option -->
-            <div style="margin-top: calc(var(--grid-base) * 5); text-align: center;">
-                <p style="font-size: 14px; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 2);">
-                    Want this comparison as a PDF reference?
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Your analyst hands you a market intelligence report. Clean formatting. Confident assertions. Executive summary. Looks professional.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                You scroll to the bottom looking for the signature. There isn't one.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                You check for a timestamp proving when the vendor delivered this. Nothing.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                You look for a verification mechanism — some way to independently confirm this came from who it claims to come from. Silence.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 5); font-size: 20px; font-weight: 600; color: var(--navy-900);">
+                Welcome to the unsigned world.
+            </p>
+
+            <h2 style="font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900);">
+                What "Unsigned" Actually Means
+            </h2>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                In cryptography, a signature does three things:
+            </p>
+
+            <ul style="margin-bottom: calc(var(--grid-base) * 4); padding-left: calc(var(--grid-base) * 4);">
+                <li style="margin-bottom: calc(var(--grid-base) * 2);"><strong>Proves who created it</strong> — The signer's identity is mathematically verifiable</li>
+                <li style="margin-bottom: calc(var(--grid-base) * 2);"><strong>Proves it hasn't been altered</strong> — Any modification breaks the signature</li>
+                <li style="margin-bottom: calc(var(--grid-base) * 2);"><strong>Proves when it was signed</strong> — Timestamp is part of the signed payload</li>
+            </ul>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Unsigned data has <strong>none of these properties.</strong>
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Your intelligence vendor sends you a PDF. Did they create it? Probably. Could someone have modified it in transit? Maybe. Was it delivered when they claim? You're trusting their word.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 5); padding: calc(var(--grid-base) * 3); background: var(--cream-100); border-left: 4px solid var(--teal-500); font-style: italic; color: var(--gray-600);">
+                Unsigned data is a claim. Signed data is proof.
+            </p>
+
+            <h2 style="font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900);">
+                The Industry That Runs On Trust
+            </h2>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Bloomberg Terminal costs $27,000 per year. FactSet costs $15,000+. AlphaSense costs $10,000+.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                None of them sign their data.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                You're paying tens of thousands of dollars for <strong>unsigned vendor claims</strong>. They claim they aggregated this. They claim they verified that. They claim their methodology is sound.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                But they don't sign it. They don't give you a mechanism to verify it independently. They don't provide cryptographic proof that what they're delivering is what they claim it is.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4); font-weight: 600;">
+                The entire intelligence industry runs on trust.
+            </p>
+
+            <h2 style="font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900);">
+                Why This Matters Now
+            </h2>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                For decades, this was fine. Intelligence was background research. Market color. Nice-to-have context.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                But something changed: <strong>AI poisoned the well.</strong>
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                When anyone with GPT-4 can generate convincing-sounding analysis, how do you know what's real?
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                When every chart can be fabricated, every quote invented, every source hallucinated — <strong>provenance became the only differentiator that matters.</strong>
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                If you can't prove it came from a real source, why should anyone believe it?
+            </p>
+
+            <h2 style="font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900);">
+                The Liability Nobody Talks About
+            </h2>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Here's what keeps compliance officers up at night:
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                You make an investment decision based on vendor intelligence. The investment goes sideways. Your LP sues. Discovery asks: <em>"Can you prove the intelligence you relied on was accurate?"</em>
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                You call your vendor. They send a PDF with generic disclaimers. No signature. No verification. Just text claiming to be from "reliable sources."
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 5); padding: calc(var(--grid-base) * 3); background: white; border: 1px solid var(--gray-400); border-radius: 8px;">
+                <strong>This is Unsigned Liability:</strong> The risk you carry when you can't defend the intelligence you relied on.
+            </p>
+
+            <h2 style="font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900);">
+                What The Signed World Looks Like
+            </h2>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Sovereign Data Intelligence exists because the unsigned world is indefensible.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Every HIVE Sovereign brief includes:
+            </p>
+
+            <ul style="margin-bottom: calc(var(--grid-base) * 4); padding-left: calc(var(--grid-base) * 4);">
+                <li style="margin-bottom: calc(var(--grid-base) * 2);"><strong>Cryptographic signatures (SHA-256)</strong> — Mathematical proof we delivered this exact document</li>
+                <li style="margin-bottom: calc(var(--grid-base) * 2);"><strong>QR verification</strong> — Scan the code, verify independently, no trust required</li>
+                <li style="margin-bottom: calc(var(--grid-base) * 2);"><strong>Timestamp attestation</strong> — Provable delivery time, signed into the document</li>
+                <li style="margin-bottom: calc(var(--grid-base) * 2);"><strong>Unbroken chains of custody</strong> — Every claim traces to primary sources</li>
+            </ul>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                This isn't optional. This isn't a premium tier. <strong>This is the baseline for what intelligence should be.</strong>
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 6); padding: calc(var(--grid-base) * 3); background: var(--navy-900); color: var(--cream-100); border-radius: 8px;">
+                Unsigned data is a liability. Signed data is defensible.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                Over the next 14 weeks, we're going to show you exactly why the unsigned world can't survive — and what the signed world looks like.
+            </p>
+
+            <p style="margin-bottom: calc(var(--grid-base) * 4);">
+                This is the standard we created when the industry had no answer to the provenance question.
+            </p>
+
+            <!-- CTA Box -->
+            <div style="margin-top: calc(var(--grid-base) * 8); padding: calc(var(--grid-base) * 5); background: var(--teal-500); border-radius: 12px;">
+                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2);">
+                    See What Signed Intelligence Looks Like
+                </h3>
+                <p style="font-size: 16px; line-height: 1.6; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3);">
+                    Download sample intelligence briefs showing cryptographic signatures, QR verification, and unbroken chains of custody. This is what the signed world looks like.
                 </p>
-                <a href="/samples/HIVE-Brief-Comparison.pdf" download style="display: inline-block; padding: 10px 20px; background: transparent; color: var(--navy-900); border: 1px solid var(--navy-900); border-radius: 6px; font-size: 14px; font-weight: 500; text-decoration: none;">
-                    Download comparison guide
+                <a href="/pricing.html" style="display: inline-block; padding: 14px 28px; background: var(--navy-900); color: var(--cream-50); border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none;">
+                    Download sample briefs
                 </a>
             </div>
+
         </div>
-    </section>
+    </article>
 
-    <!-- API Access -->
-    <section class="pricing" style="background: var(--cream-50); padding: 80px 52px;">
-        <div class="section-container">
-            <div class="section-label">For Institutions</div>
-            <h2 class="section-title" style="margin-bottom: calc(var(--grid-base) * 2);">API Access</h2>
-            <p style="max-width: 700px; margin-bottom: calc(var(--grid-base) * 6); color: var(--gray-600); font-size: 18px; line-height: 1.7;">
-                Signed API layer with full provenance chain. Build verifiable intelligence into your own systems. Application-based design partner program.
-            </p>
-
-            <div style="max-width: 600px; margin: 0 auto;">
-                <div class="pricing-card">
-                    <div class="pricing-type">API Access</div>
-                    <h3 class="pricing-name">Design Partner Program</h3>
-                    <div class="pricing-amount" style="font-size: 20px;">$48K - $120K/year</div>
-                    <div class="pricing-period">Annual contracts</div>
-                    
-                    <div style="padding: calc(var(--grid-base) * 3) 0; margin: calc(var(--grid-base) * 3) 0;">
-                        <ul class="pricing-features">
-                            <li>Signed API with full provenance chain</li>
-                            <li>All sovereign data signals (government filings, institutional intelligence, structural patterns)</li>
-                            <li>White-label ready for platform integration</li>
-                            <li>Custom connector development</li>
-                            <li>Dedicated onboarding & SLA</li>
-                            <li>Agent-native and MCP-compatible</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="/#apply" class="pricing-cta">Apply for API access</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Three Problems - Category Education -->
-    <section style="background: var(--navy-900); padding: 80px 52px;">
-        <div class="section-container">
-            <p style="font-family: var(--font-mono); font-size: 13px; color: var(--teal-500); letter-spacing: 0.08em; margin-bottom: calc(var(--grid-base) * 2); text-align: center;">WHY SOVEREIGN DATA INTELLIGENCE</p>
-            <h2 style="font-size: 32px; font-weight: 700; color: var(--cream-50); text-align: center; margin-bottom: calc(var(--grid-base) * 6);">The three problems we solve</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: calc(var(--grid-base) * 5); max-width: 1000px; margin: 0 auto;">
-                <div>
-                    <h3 style="color: var(--teal-500); font-size: 18px; font-weight: 600; margin-bottom: calc(var(--grid-base) * 2);">The Provenance Gap</h3>
-                    <p style="color: var(--cream-100); font-size: 16px; line-height: 1.6; opacity: 0.9;">
-                        Intelligence vendors can't prove where their data came from. When compliance asks "verify this," they have no answer. We close this gap with cryptographically signed source chains.
-                    </p>
-                </div>
-                <div>
-                    <h3 style="color: var(--teal-500); font-size: 18px; font-weight: 600; margin-bottom: calc(var(--grid-base) * 2);">The Structural Blind Spot</h3>
-                    <p style="color: var(--cream-100); font-size: 16px; line-height: 1.6; opacity: 0.9;">
-                        Single-source analysis misses patterns only visible when cross-referencing multiple government filings. We detect these with multi-layer triangulation.
-                    </p>
-                </div>
-                <div>
-                    <h3 style="color: var(--teal-500); font-size: 18px; font-weight: 600; margin-bottom: calc(var(--grid-base) * 2);">The Asymmetric Information Standard</h3>
-                    <p style="color: var(--cream-100); font-size: 16px; line-height: 1.6; opacity: 0.9;">
-                        Vendors sell intelligence they can't defend. Unsigned data. Unverified sources. Indefensible in court or compliance review. We created the Sovereign Evidence Standard to replace it.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- Next Article -->
     <section style="background: var(--cream-100); padding: 60px 52px; border-top: 1px solid var(--gray-400);">
-        <div class="section-container" style="text-align: center;">
-            <p style="font-family: var(--font-mono); font-size: 12px; color: var(--gray-600); letter-spacing: 0.05em; margin-bottom: calc(var(--grid-base) * 2);">
-                SOVEREIGN DATA INTELLIGENCE™
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <p style="font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin-bottom: calc(var(--grid-base) * 2);">NEXT WEEK · JANUARY 13, 2026</p>
+            <h3 style="font-size: 24px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2);">
+                The Provenance Gap
+            </h3>
+            <p style="font-size: 16px; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 3);">
+                When compliance asks "prove it," vendors have no answer.
             </p>
-            <p style="font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto calc(var(--grid-base) * 3); line-height: 1.6;">
-                The standard we created when the industry had no answer to the provenance question.
-            </p>
-            <p style="font-size: 14px; color: var(--gray-600);">
-                Questions? <a href="/cdn-cgi/l/email-protection#5436263d313227143c3d2231273b223126313d333a7a373b39" style="color: var(--teal-600); text-decoration: none;"><span class="__cf_email__" data-cfemail="82e0f0ebe7e4f1c2eaebf4e7f1edf4e7f0e7ebe5ecace1edef">[email&#160;protected]</span></a>
-            </p>
+            <a href="/newsletter.html" style="color: var(--teal-600); text-decoration: none; font-weight: 500;">
+                ← Back to all newsletters
+            </a>
         </div>
     </section>
 <footer>
