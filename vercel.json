@@ -1,6 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/newsletter", "destination": "/newsletter.html" }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
