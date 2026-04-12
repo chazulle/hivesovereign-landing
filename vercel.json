@@ -1,13 +1,6 @@
 {
-  "routes": [
-    {
-      "src": "/pricing",
-      "dest": "/pricing.html"
-    },
-    {
-      "src": "/newsletter",
-      "dest": "/newsletter.html"
-    }
-  ],
-  "cleanUrls": true
+  "rewrites": [
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/newsletter", "destination": "/newsletter.html" }
+  ]
 }
