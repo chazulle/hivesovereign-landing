@@ -106,6 +106,28 @@
             transform: translateY(-1px);
         }
         
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--navy-900);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .nav-links.mobile-open {
+            display: flex !important;
+        }
+        
         /* Hero Section */
         .hero {
             margin-top: 80px;
@@ -942,8 +964,31 @@
         }
         
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream-50);
+                flex-direction: column;
+                padding: calc(var(--grid-base) * 3);
+                gap: calc(var(--grid-base) * 3);
+                border-bottom: 1px solid rgba(10, 22, 40, 0.08);
+                box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1);
+            }
+            
+            .nav-links.mobile-open {
+                display: flex;
+            }
+            
+            .nav-links a {
+                text-align: center;
+                padding: calc(var(--grid-base) * 2);
             }
             
             .hero {
@@ -987,7 +1032,12 @@
     <nav>
         <div class="nav-container">
             <a href="/" class="logo" style="text-decoration: none;">HIVE SOVEREIGN</a>
-            <div class="nav-links">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="mobileNav">
                 <a href="/pricing.html">Pricing</a>
                 <a href="/newsletter.html">Newsletter</a>
                 <a href="#apply" class="nav-cta">Get started</a>
@@ -1564,6 +1614,20 @@
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
             }
+        });
+    </script>
+
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('mobile-open');
+        }
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('mobile-open');
+            });
         });
     </script>
 </body>

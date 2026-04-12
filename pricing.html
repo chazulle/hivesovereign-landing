@@ -100,6 +100,28 @@
             transition: all 0.3s;
         }
         
+                
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--navy-900);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .nav-links.mobile-open {
+            display: flex !important;
+        }
         .nav-cta:hover {
             background: var(--teal-600);
             color: var(--navy-900);
@@ -1473,6 +1495,19 @@
             }
         });
     </script>
+
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('mobile-open');
+        }
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('mobile-open');
+            });
+        });
+    </script>
 </body>
 </html>
     <title>Pricing — HIVE Sovereign</title>
@@ -1992,6 +2027,28 @@
             transition: all 0.3s;
         }
         
+                
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--navy-900);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .nav-links.mobile-open {
+            display: flex !important;
+        }
         .nav-cta:hover {
             background: var(--teal-600);
             color: var(--navy-900);
@@ -3363,6 +3420,19 @@
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
             }
+        });
+    </script>
+
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('mobile-open');
+        }
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('mobile-open');
+            });
         });
     </script>
 </body>
