@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing the Sovereign Evidence Standard — HIVE Sovereign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-900: #0A1628; --navy-700: #1C3A5C; --teal-500: #00D9C0; --teal-600: #00B3A0;
+            --cream-50: #FDFBF7; --cream-100: #F8F4EC; --gray-400: #9CA3AF; --gray-600: #4B5563;
+            --font-display: 'Archivo', sans-serif; --font-mono: 'JetBrains Mono', monospace; --grid-base: 8px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-display); background: var(--cream-50); color: var(--navy-900); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(10, 22, 40, 0.08); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: calc(var(--grid-base) * 3) calc(var(--grid-base) * 6); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--navy-900); letter-spacing: -0.02em; text-decoration: none; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--navy-900); margin: 5px 0; }
+        .nav-links { display: flex; gap: calc(var(--grid-base) * 5); align-items: center; }
+        .nav-links a { color: var(--navy-700); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--teal-600); }
+        .nav-cta { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 1.5) calc(var(--grid-base) * 3); border-radius: 6px; font-weight: 600; }
+        .nav-cta:hover { background: var(--teal-600); color: var(--navy-900); }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream-50); flex-direction: column; padding: calc(var(--grid-base) * 3); gap: calc(var(--grid-base) * 3); border-bottom: 1px solid rgba(10, 22, 40, 0.08); box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1); }
+            .nav-links.mobile-open { display: flex !important; }
+            .nav-links a { text-align: center; padding: calc(var(--grid-base) * 2); }
+        }
+        .hero { padding: 140px calc(var(--grid-base) * 6) 40px; max-width: 700px; margin: 0 auto; }
+        .hero a { font-family: var(--font-mono); font-size: 13px; color: var(--teal-600); text-decoration: none; letter-spacing: 0.05em; }
+        .hero-meta { font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin: calc(var(--grid-base) * 3) 0 calc(var(--grid-base) * 2); }
+        .hero h1 { font-size: clamp(36px, 5vw, 48px); font-weight: 900; line-height: 1.15; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); letter-spacing: -0.02em; }
+        .hero p { font-size: 20px; line-height: 1.6; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 4); }
+        .hero-divider { padding: calc(var(--grid-base) * 2) 0; border-top: 1px solid var(--gray-400); border-bottom: 1px solid var(--gray-400); }
+        .hero-divider p { font-size: 14px; color: var(--gray-600); margin: 0; }
+        article { background: var(--cream-50); padding: 60px calc(var(--grid-base) * 6) 80px; }
+        .article-content { max-width: 700px; margin: 0 auto; font-size: 18px; line-height: 1.8; color: var(--navy-900); }
+        .article-content p { margin-bottom: calc(var(--grid-base) * 4); }
+        .article-content h2 { font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900); }
+        .article-content ul { margin-bottom: calc(var(--grid-base) * 4); padding-left: calc(var(--grid-base) * 4); }
+        .article-content li { margin-bottom: calc(var(--grid-base) * 2); }
+        .article-content strong { font-weight: 600; }
+        .callout { margin: calc(var(--grid-base) * 5) 0; padding: calc(var(--grid-base) * 3); background: var(--cream-100); border-left: 4px solid var(--teal-500); font-style: italic; color: var(--gray-600); }
+        .highlight-box { margin: calc(var(--grid-base) * 5) 0; padding: calc(var(--grid-base) * 3); background: white; border: 1px solid var(--gray-400); border-radius: 8px; }
+        .cta-box { margin-top: calc(var(--grid-base) * 8); padding: calc(var(--grid-base) * 5); background: var(--teal-500); border-radius: 12px; }
+        .cta-box h3 { font-size: 24px; font-weight: 700; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2); }
+        .cta-box p { font-size: 16px; line-height: 1.6; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); }
+        .cta-box a { display: inline-block; padding: 14px 28px; background: var(--navy-900); color: var(--cream-50); border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; }
+        .next-article { background: var(--cream-100); padding: 60px calc(var(--grid-base) * 6); border-top: 1px solid var(--gray-400); text-align: center; }
+        .next-article p { font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin-bottom: calc(var(--grid-base) * 2); }
+        .next-article h3 { font-size: 24px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2); }
+        .next-article .subtitle { font-size: 16px; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 3); }
+        .next-article a { color: var(--teal-600); text-decoration: none; font-weight: 500; }
+        footer { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 8) calc(var(--grid-base) * 6); text-align: center; }
+        footer p { font-size: 14px; color: rgba(253, 251, 247, 0.7); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">HIVE SOVEREIGN</a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="mobileNav">
+                <a href="/pricing">Pricing</a>
+                <a href="/newsletter">Newsletter</a>
+                <a href="/#apply" class="nav-cta">Get started</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <a href="/newsletter">← Back to Newsletter</a>
+        <div class="hero-meta">ISSUE #5 · FEBRUARY 3, 2026</div>
+        <h1>Introducing the Sovereign Evidence Standard</h1>
+        <p>What It Looks Like When Intelligence Comes With Proof</p>
+        <div class="hero-divider"><p>Reading time: 10 minutes</p></div>
+    </section>
+
+    <article>
+        <div class="article-content">
+            <p>You open a HIVE Sovereign brief. At the bottom, you see something intelligence vendors don't provide:</p>
+
+            <p>A cryptographic signature. SHA-256 hash. Timestamp. QR code linking to independent verification.</p>
+
+            <p>You scan the QR code. It takes you to a verification page showing the exact document hash, signature validation, and delivery timestamp.</p>
+
+            <p>No trust required. Mathematical proof that this exact document, with this exact data, was delivered by HIVE Sovereign at this exact time.</p>
+
+            <p style="font-size: 20px; font-weight: 600; margin: calc(var(--grid-base) * 5) 0;">This is the Sovereign Evidence Standard.</p>
+
+            <h2>What Makes Evidence "Sovereign"</h2>
+
+            <p>The word "sovereign" has a specific meaning in this context:</p>
+
+            <p><strong>Sovereign data</strong> means data you can verify independently, without trusting the vendor who provided it.</p>
+
+            <p>Most intelligence vendors give you <strong>trust-dependent data</strong>. You must trust their methodology. Trust their sources. Trust their aggregation process. Trust their quality control.</p>
+
+            <p>If the vendor lies, you have no way to detect it. If they make mistakes, you have no way to verify. If regulators question the data, you have no independent proof.</p>
+
+            <p>Sovereign data flips this model.</p>
+
+            <div class="callout">
+                Sovereign Evidence: Intelligence you can verify independently, without trusting the provider.
+            </div>
+
+            <h2>The Three Pillars</h2>
+
+            <p>The Sovereign Evidence Standard rests on three technical pillars:</p>
+
+            <p><strong>1. Cryptographic Signatures</strong></p>
+
+            <p>Every HIVE Sovereign brief is signed with SHA-256 cryptographic hashing. This creates a unique fingerprint of the exact document.</p>
+
+            <p>If even a single character changes — a typo, a date, a number — the hash breaks. The signature becomes invalid.</p>
+
+            <p>This means you have mathematical proof that the document you're holding is exactly what we delivered. No tampering. No modifications. Bit-for-bit identical.</p>
+
+            <p><strong>2. Hardware-Notarized Provenance</strong></p>
+
+            <p>The signature isn't generated by software running on a cloud server. It's generated by a dedicated signing node — an air-gapped device whose only job is to sign documents.</p>
+
+            <p>This node sits on an isolated network segment. It has no internet access. It cannot be remotely compromised. It signs documents using a private key that never leaves the hardware.</p>
+
+            <p>When you verify a HIVE Sovereign signature, you're verifying that this specific piece of hardware — not some cloud service, not some software process — produced this signature.</p>
+
+            <p>We'll dive deeper into why this matters next week. For now, understand: hardware-notarized provenance is magnitudes harder to replicate than software attestation.</p>
+
+            <p><strong>3. Unbroken Chains of Custody</strong></p>
+
+            <p>Every claim in a HIVE Sovereign brief traces back to a specific government filing. Not "compiled from public sources." Not "aggregated data." <strong>Specific filings with specific accession numbers.</strong></p>
+
+            <p>When we say a company's institutional ownership increased 15%, we cite the exact SEC 13F filing (accession number, filer CIK, report date) where that data appears.</p>
+
+            <p>When we say a congressional member sold stock, we cite the exact STOCK Act disclosure (filing date, transaction date, ticker) on record with the House Clerk or Senate.</p>
+
+            <p>You can verify every single claim by going to the source yourself. No vendor trust required.</p>
+
+            <h2>Why This Standard Didn't Exist Before</h2>
+
+            <p>Building this infrastructure is expensive and complex:</p>
+
+            <ul>
+                <li><strong>Physical signing infrastructure</strong> — Dedicated hardware, isolated networks, air-gapped architecture</li>
+                <li><strong>Multi-source data pipelines</strong> — Ingesting from 30+ government sources, not licensing one aggregated feed</li>
+                <li><strong>Chain-of-custody validation</strong> — Every claim must trace to a specific primary source, which requires extensive data architecture</li>
+                <li><strong>Verification infrastructure</strong> — Public verification endpoints allowing independent confirmation</li>
+            </ul>
+
+            <p>Most vendors optimize for speed and scale. We optimized for <strong>defensibility</strong>.</p>
+
+            <p>This is why the Sovereign Evidence Standard didn't exist before. Not because it's technically impossible. Because it's economically irrational — unless you're selling to buyers who actually need to defend their decisions.</p>
+
+            <h2>What This Looks Like in Practice</h2>
+
+            <p>Here's what you get with every HIVE Sovereign brief:</p>
+
+            <p><strong>Document-level verification:</strong></p>
+            <ul>
+                <li>SHA-256 cryptographic signature proving document integrity</li>
+                <li>Timestamp showing exact delivery time</li>
+                <li>QR code linking to independent verification page</li>
+                <li>Hardware signature from our air-gapped signing node</li>
+            </ul>
+
+            <p><strong>Claim-level verification:</strong></p>
+            <ul>
+                <li>Every factual claim cites the specific government source</li>
+                <li>Source citations include accession numbers, filing dates, URLs</li>
+                <li>You can verify each claim independently without asking us</li>
+            </ul>
+
+            <p><strong>Audit-grade provenance:</strong></p>
+            <ul>
+                <li>Complete chain of custody from raw government data to final brief</li>
+                <li>No aggregated feeds, no proprietary methodologies, no black boxes</li>
+                <li>Everything traceable to primary sources</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>The Standard in Action:</strong> Download our sample briefs. Scan the QR codes. Verify the signatures. Check the source citations. See what sovereign evidence actually looks like.
+            </div>
+
+            <h2>Why This Matters for You</h2>
+
+            <p>If you're making fiduciary decisions — investment allocation, credit underwriting, risk assessment — you need intelligence you can defend.</p>
+
+            <p>Unsigned vendor data doesn't cut it when:</p>
+            <ul>
+                <li>The SEC asks you to prove your information came from public sources</li>
+                <li>Your LP sues claiming you had material non-public information</li>
+                <li>Compliance audits your decision-making process</li>
+                <li>You need to demonstrate due diligence met industry standards</li>
+            </ul>
+
+            <p>In these scenarios, you need <strong>evidence</strong>, not vendor claims.</p>
+
+            <p>The Sovereign Evidence Standard gives you that evidence: cryptographic signatures proving delivery, hardware attestation proving origin, and unbroken chains proving source.</p>
+
+            <p>This isn't better intelligence. This is <strong>verifiable intelligence</strong>.</p>
+
+            <p>And that's the standard we created when the industry had no answer to the provenance question.</p>
+
+            <div class="cta-box">
+                <h3>See the Standard in Action</h3>
+                <p>Download sample briefs showing cryptographic signatures, QR verification, and unbroken chains of custody. This is what sovereign evidence looks like.</p>
+                <a href="/pricing">Download sample briefs</a>
+            </div>
+        </div>
+    </article>
+
+    <section class="next-article">
+        <p>NEXT WEEK · FEBRUARY 10, 2026</p>
+        <h3>Hardware-Notarized Provenance</h3>
+        <p class="subtitle">Why software attestation isn't enough</p>
+        <a href="/newsletter">← Back to all newsletters</a>
+    </section>
+
+    <footer><p>© 2026 Acclivity Ventures LLC. All rights reserved.</p></footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileNav').classList.toggle('mobile-open');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('mobile-open');
+            });
+        });
+    </script>
+</body>
+</html>

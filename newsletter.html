@@ -3,287 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter — HIVE Sovereign</title>
+    <title>The Sovereign Standard — HIVE Sovereign</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy-900: #0A1628;
-            --navy-700: #1C3A5C;
-            --teal-500: #00D9C0;
-            --teal-600: #00B3A0;
-            --cream-50: #FDFBF7;
-            --cream-100: #F8F4EC;
-            --gray-400: #9CA3AF;
-            --gray-600: #4B5563;
-            --font-display: 'Archivo', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            --grid-base: 8px;
+            --navy-900: #0A1628; --navy-700: #1C3A5C; --teal-500: #00D9C0; --teal-600: #00B3A0;
+            --cream-50: #FDFBF7; --cream-100: #F8F4EC; --gray-400: #9CA3AF; --gray-600: #4B5563;
+            --font-display: 'Archivo', sans-serif; --font-mono: 'JetBrains Mono', monospace; --grid-base: 8px;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-display);
-            background: var(--cream-50);
-            color: var(--navy-900);
-            line-height: 1.6;
-        }
-        
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(10, 22, 40, 0.08);
-        }
-        
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: calc(var(--grid-base) * 3) calc(var(--grid-base) * 6);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: var(--font-mono);
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--navy-900);
-            letter-spacing: -0.02em;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: calc(var(--grid-base) * 5);
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--navy-700);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--teal-600);
-        }
-        
-        .nav-cta {
-            background: var(--navy-900);
-            color: var(--cream-50);
-            padding: calc(var(--grid-base) * 1.5) calc(var(--grid-base) * 3);
-            border-radius: 6px;
-            font-weight: 600;
-        }
-        
-                
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-        }
-        
-        .mobile-menu-toggle span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--navy-900);
-            margin: 5px 0;
-            transition: all 0.3s;
-        }
-        
-        .nav-links.mobile-open {
-            display: flex !important;
-        }
-        .nav-cta:hover {
-            background: var(--teal-600);
-            color: var(--navy-900);
-        }
-        
-        .hero {
-            padding: 140px calc(var(--grid-base) * 6) 80px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: calc(var(--grid-base) * 3);
-            letter-spacing: -0.02em;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-        
-        .articles {
-            padding: 60px calc(var(--grid-base) * 6) 120px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .article-card {
-            background: white;
-            padding: calc(var(--grid-base) * 5);
-            border-radius: 12px;
-            margin-bottom: calc(var(--grid-base) * 4);
-            border: 1px solid var(--gray-400);
-            transition: all 0.3s;
-        }
-        
-        .article-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(10, 22, 40, 0.1);
-            border-color: var(--teal-500);
-        }
-        
-        .article-meta {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            color: var(--teal-600);
-            letter-spacing: 0.05em;
-            margin-bottom: calc(var(--grid-base) * 2);
-        }
-        
-        .article-card h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: calc(var(--grid-base) * 2);
-            line-height: 1.2;
-        }
-        
-        .article-card p {
-            font-size: 17px;
-            line-height: 1.6;
-            color: var(--gray-600);
-            margin-bottom: calc(var(--grid-base) * 3);
-        }
-        
-        .article-card a {
-            display: inline-block;
-            padding: 12px 24px;
-            background: var(--navy-900);
-            color: var(--cream-50);
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .article-card a:hover {
-            background: var(--teal-500);
-            color: var(--navy-900);
-        }
-        
-        .upcoming {
-            padding: calc(var(--grid-base) * 5);
-            background: var(--cream-100);
-            border-radius: 12px;
-            border: 1px dashed var(--gray-400);
-            text-align: center;
-        }
-        
-        .upcoming-meta {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            color: var(--gray-600);
-            letter-spacing: 0.05em;
-            margin-bottom: calc(var(--grid-base) * 3);
-        }
-        
-        .upcoming h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: calc(var(--grid-base) * 3);
-        }
-        
-        .upcoming-list {
-            text-align: left;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .upcoming-list p {
-            font-size: 15px;
-            color: var(--gray-600);
-            margin-bottom: calc(var(--grid-base) * 1);
-            padding-left: calc(var(--grid-base) * 2);
-        }
-        
-        footer {
-            background: var(--navy-900);
-            color: var(--cream-50);
-            padding: calc(var(--grid-base) * 8) calc(var(--grid-base) * 6);
-            text-align: center;
-        }
-        
-        footer p {
-            font-size: 14px;
-            color: rgba(253, 251, 247, 0.7);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-display); background: var(--cream-50); color: var(--navy-900); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(10, 22, 40, 0.08); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: calc(var(--grid-base) * 3) calc(var(--grid-base) * 6); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--navy-900); letter-spacing: -0.02em; text-decoration: none; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--navy-900); margin: 5px 0; }
+        .nav-links { display: flex; gap: calc(var(--grid-base) * 5); align-items: center; }
+        .nav-links a { color: var(--navy-700); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--teal-600); }
+        .nav-cta { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 1.5) calc(var(--grid-base) * 3); border-radius: 6px; font-weight: 600; }
+        .nav-cta:hover { background: var(--teal-600); color: var(--navy-900); }
         @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--cream-50);
-                flex-direction: column;
-                padding: calc(var(--grid-base) * 3);
-                gap: calc(var(--grid-base) * 3);
-                border-bottom: 1px solid rgba(10, 22, 40, 0.08);
-                box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1);
-            }
-            
-            .nav-links.mobile-open {
-                display: flex !important;
-            }
-            
-            .nav-links a {
-                text-align: center;
-                padding: calc(var(--grid-base) * 2);
-            }
+            .mobile-menu-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream-50); flex-direction: column; padding: calc(var(--grid-base) * 3); gap: calc(var(--grid-base) * 3); border-bottom: 1px solid rgba(10, 22, 40, 0.08); box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1); }
+            .nav-links.mobile-open { display: flex !important; }
+            .nav-links a { text-align: center; padding: calc(var(--grid-base) * 2); }
         }
+        .hero { padding: 140px calc(var(--grid-base) * 6) 60px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .hero h1 { font-size: clamp(42px, 6vw, 56px); font-weight: 900; line-height: 1.1; margin-bottom: calc(var(--grid-base) * 3); letter-spacing: -0.02em; }
+        .hero p { font-size: 20px; color: var(--gray-600); max-width: 600px; margin: 0 auto calc(var(--grid-base) * 4); }
+        .hero-meta { font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; }
+        .articles { background: var(--cream-50); padding: 60px calc(var(--grid-base) * 6) 100px; }
+        .articles-container { max-width: 900px; margin: 0 auto; }
+        .article-card { background: white; border: 1px solid rgba(10, 22, 40, 0.08); border-radius: 12px; padding: calc(var(--grid-base) * 4); margin-bottom: calc(var(--grid-base) * 3); transition: all 0.2s; text-decoration: none; display: block; }
+        .article-card:hover { border-color: var(--teal-500); box-shadow: 0 4px 20px rgba(0, 217, 192, 0.1); }
+        .article-meta { font-family: var(--font-mono); font-size: 12px; color: var(--gray-600); letter-spacing: 0.05em; margin-bottom: calc(var(--grid-base) * 2); }
+        .article-card h2 { font-size: 24px; font-weight: 700; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2); }
+        .article-card p { font-size: 16px; color: var(--gray-600); line-height: 1.6; }
+        footer { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 8) calc(var(--grid-base) * 6); text-align: center; }
+        footer p { font-size: 14px; color: rgba(253, 251, 247, 0.7); }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="/" class="logo">HIVE SOVEREIGN</a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <div class="nav-links" id="mobileNav">
                 <a href="/pricing">Pricing</a>
@@ -293,51 +61,113 @@
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
         <h1>The Sovereign Standard</h1>
-        <p>Weekly insights on building the standard for verifiable intelligence — from the provenance gap to agent-native infrastructure.</p>
+        <p>A 14-week journey from the unsigned world to verifiable intelligence.</p>
+        <p class="hero-meta">WEEKLY NEWSLETTER · JANUARY–APRIL 2026</p>
     </section>
 
-    <!-- Articles -->
     <section class="articles">
-        
-        <!-- Article 2 -->
-        <article class="article-card">
-            <div class="article-meta">ISSUE #2 · JANUARY 13, 2026</div>
-            <h2>The Provenance Gap</h2>
-            <p>When compliance asks "prove it," the intelligence industry has no answer. Aggregated data. Curated feeds. Unsigned sources. This is the gap that makes intelligence indefensible.</p>
-            <a href="/newsletter/provenance-gap">Read article →</a>
-        </article>
+        <div class="articles-container">
+            
+            <a href="/newsletter/the-standard-we-created" class="article-card">
+                <div class="article-meta">ISSUE #14 · APRIL 7, 2026</div>
+                <h2>The Standard We Created</h2>
+                <p>Not better intelligence — verifiable intelligence. The manifesto.</p>
+            </a>
 
-        <!-- Article 1 -->
-        <article class="article-card">
-            <div class="article-meta">ISSUE #1 · JANUARY 6, 2026</div>
-            <h2>The Unsigned World</h2>
-            <p>The intelligence industry runs on unsigned data — and nobody admits it's a problem. This is where it all begins.</p>
-            <a href="/newsletter/the-unsigned-world">Read article →</a>
-        </article>
+            <a href="/newsletter/why-this-standard-matters" class="article-card">
+                <div class="article-meta">ISSUE #13 · MARCH 31, 2026</div>
+                <h2>Why This Standard Matters</h2>
+                <p>The market gap between research and defensibility.</p>
+            </a>
 
-        <!-- Upcoming -->
-        <div class="upcoming">
-            <p class="upcoming-meta">COMING WEEKLY</p>
-            <h3>The Complete Arc: 14 Weeks</h3>
-            <div class="upcoming-list">
-                <p>• The Structural Blind Spot</p>
-                <p>• The Asymmetric Information Standard</p>
-                <p>• The Sovereign Evidence Standard</p>
-                <p>• Hardware-Notarized Provenance</p>
-                <p>• The Fiduciary Shield</p>
-                <p>• And 8 more building to the manifesto</p>
-            </div>
+            <a href="/newsletter/sovereign-data-infrastructure" class="article-card">
+                <div class="article-meta">ISSUE #12 · MARCH 24, 2026</div>
+                <h2>The Sovereign Data Infrastructure</h2>
+                <p>We're not selling briefs — we're building infrastructure.</p>
+            </a>
+
+            <a href="/newsletter/compound-distress-indicators" class="article-card">
+                <div class="article-meta">ISSUE #11 · MARCH 17, 2026</div>
+                <h2>Compound Distress Indicators</h2>
+                <p>Predicting motivated sellers before they know they're motivated.</p>
+            </a>
+
+            <a href="/newsletter/multi-source-triangulation" class="article-card">
+                <div class="article-meta">ISSUE #10 · MARCH 10, 2026</div>
+                <h2>Multi-Source Triangulation</h2>
+                <p>When three independent sources confirm the same signal.</p>
+            </a>
+
+            <a href="/newsletter/congressional-alpha" class="article-card">
+                <div class="article-meta">ISSUE #9 · MARCH 3, 2026</div>
+                <h2>Congressional Alpha</h2>
+                <p>The 6.2-month information advantage.</p>
+            </a>
+
+            <a href="/newsletter/rating-agency-lag" class="article-card">
+                <div class="article-meta">ISSUE #8 · FEBRUARY 24, 2026</div>
+                <h2>Rating Agency Lag</h2>
+                <p>Why rating agencies are always late.</p>
+            </a>
+
+            <a href="/newsletter/fiduciary-shield" class="article-card">
+                <div class="article-meta">ISSUE #7 · FEBRUARY 17, 2026</div>
+                <h2>The Fiduciary Shield</h2>
+                <p>Defending decisions when your LP sues.</p>
+            </a>
+
+            <a href="/newsletter/hardware-notarized-provenance" class="article-card">
+                <div class="article-meta">ISSUE #6 · FEBRUARY 10, 2026</div>
+                <h2>Hardware-Notarized Provenance</h2>
+                <p>Why software attestation isn't enough.</p>
+            </a>
+
+            <a href="/newsletter/sovereign-evidence-standard" class="article-card">
+                <div class="article-meta">ISSUE #5 · FEBRUARY 3, 2026</div>
+                <h2>Introducing the Sovereign Evidence Standard</h2>
+                <p>What it looks like when intelligence comes with proof.</p>
+            </a>
+
+            <a href="/newsletter/asymmetric-information-standard" class="article-card">
+                <div class="article-meta">ISSUE #4 · JANUARY 27, 2026</div>
+                <h2>The Asymmetric Information Standard</h2>
+                <p>The double standard that makes intelligence indefensible.</p>
+            </a>
+
+            <a href="/newsletter/structural-blind-spot" class="article-card">
+                <div class="article-meta">ISSUE #3 · JANUARY 20, 2026</div>
+                <h2>The Structural Blind Spot</h2>
+                <p>Why single-source analysis misses what matters.</p>
+            </a>
+
+            <a href="/newsletter/provenance-gap" class="article-card">
+                <div class="article-meta">ISSUE #2 · JANUARY 13, 2026</div>
+                <h2>The Provenance Gap</h2>
+                <p>When you can't prove where your intelligence came from.</p>
+            </a>
+
+            <a href="/newsletter/the-unsigned-world" class="article-card">
+                <div class="article-meta">ISSUE #1 · JANUARY 6, 2026</div>
+                <h2>The Unsigned World</h2>
+                <p>Why most intelligence can't be defended when questioned.</p>
+            </a>
+
         </div>
-
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Acclivity Ventures LLC. All rights reserved.</p>
-    </footer>
+    <footer><p>© 2026 Acclivity Ventures LLC. All rights reserved.</p></footer>
 
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileNav').classList.toggle('mobile-open');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('mobile-open');
+            });
+        });
+    </script>
 </body>
 </html>

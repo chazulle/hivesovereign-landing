@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congressional Alpha — HIVE Sovereign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-900: #0A1628; --navy-700: #1C3A5C; --teal-500: #00D9C0; --teal-600: #00B3A0;
+            --cream-50: #FDFBF7; --cream-100: #F8F4EC; --gray-400: #9CA3AF; --gray-600: #4B5563;
+            --font-display: 'Archivo', sans-serif; --font-mono: 'JetBrains Mono', monospace; --grid-base: 8px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-display); background: var(--cream-50); color: var(--navy-900); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(10, 22, 40, 0.08); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: calc(var(--grid-base) * 3) calc(var(--grid-base) * 6); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--navy-900); letter-spacing: -0.02em; text-decoration: none; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--navy-900); margin: 5px 0; }
+        .nav-links { display: flex; gap: calc(var(--grid-base) * 5); align-items: center; }
+        .nav-links a { color: var(--navy-700); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--teal-600); }
+        .nav-cta { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 1.5) calc(var(--grid-base) * 3); border-radius: 6px; font-weight: 600; }
+        .nav-cta:hover { background: var(--teal-600); color: var(--navy-900); }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream-50); flex-direction: column; padding: calc(var(--grid-base) * 3); gap: calc(var(--grid-base) * 3); border-bottom: 1px solid rgba(10, 22, 40, 0.08); box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1); }
+            .nav-links.mobile-open { display: flex !important; }
+            .nav-links a { text-align: center; padding: calc(var(--grid-base) * 2); }
+        }
+        .hero { padding: 140px calc(var(--grid-base) * 6) 40px; max-width: 700px; margin: 0 auto; }
+        .hero a { font-family: var(--font-mono); font-size: 13px; color: var(--teal-600); text-decoration: none; letter-spacing: 0.05em; }
+        .hero-meta { font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin: calc(var(--grid-base) * 3) 0 calc(var(--grid-base) * 2); }
+        .hero h1 { font-size: clamp(36px, 5vw, 48px); font-weight: 900; line-height: 1.15; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); letter-spacing: -0.02em; }
+        .hero p { font-size: 20px; line-height: 1.6; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 4); }
+        .hero-divider { padding: calc(var(--grid-base) * 2) 0; border-top: 1px solid var(--gray-400); border-bottom: 1px solid var(--gray-400); }
+        .hero-divider p { font-size: 14px; color: var(--gray-600); margin: 0; }
+        article { background: var(--cream-50); padding: 60px calc(var(--grid-base) * 6) 80px; }
+        .article-content { max-width: 700px; margin: 0 auto; font-size: 18px; line-height: 1.8; color: var(--navy-900); }
+        .article-content p { margin-bottom: calc(var(--grid-base) * 4); }
+        .article-content h2 { font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900); }
+        .article-content ul { margin-bottom: calc(var(--grid-base) * 4); padding-left: calc(var(--grid-base) * 4); }
+        .article-content li { margin-bottom: calc(var(--grid-base) * 2); }
+        .article-content strong { font-weight: 600; }
+        .callout { margin: calc(var(--grid-base) * 5) 0; padding: calc(var(--grid-base) * 3); background: var(--cream-100); border-left: 4px solid var(--teal-500); font-style: italic; color: var(--gray-600); }
+        .highlight-box { margin: calc(var(--grid-base) * 5) 0; padding: calc(var(--grid-base) * 3); background: white; border: 1px solid var(--gray-400); border-radius: 8px; }
+        .cta-box { margin-top: calc(var(--grid-base) * 8); padding: calc(var(--grid-base) * 5); background: var(--teal-500); border-radius: 12px; }
+        .cta-box h3 { font-size: 24px; font-weight: 700; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2); }
+        .cta-box p { font-size: 16px; line-height: 1.6; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); }
+        .cta-box a { display: inline-block; padding: 14px 28px; background: var(--navy-900); color: var(--cream-50); border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; }
+        .next-article { background: var(--cream-100); padding: 60px calc(var(--grid-base) * 6); border-top: 1px solid var(--gray-400); text-align: center; }
+        .next-article p { font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin-bottom: calc(var(--grid-base) * 2); }
+        .next-article h3 { font-size: 24px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2); }
+        .next-article .subtitle { font-size: 16px; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 3); }
+        .next-article a { color: var(--teal-600); text-decoration: none; font-weight: 500; }
+        footer { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 8) calc(var(--grid-base) * 6); text-align: center; }
+        footer p { font-size: 14px; color: rgba(253, 251, 247, 0.7); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">HIVE SOVEREIGN</a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="mobileNav">
+                <a href="/pricing">Pricing</a>
+                <a href="/newsletter">Newsletter</a>
+                <a href="/#apply" class="nav-cta">Get started</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <a href="/newsletter">← Back to Newsletter</a>
+        <div class="hero-meta">ISSUE #9 · MARCH 3, 2026</div>
+        <h1>Congressional Alpha</h1>
+        <p>The 6.2-Month Information Advantage</p>
+        <div class="hero-divider"><p>Reading time: 12 minutes</p></div>
+    </section>
+
+    <article>
+        <div class="article-content">
+            <p>A senator on the Banking Committee sells $500,000 of bank stock. The transaction happens January 15. The STOCK Act disclosure appears February 28 — 45 days later.</p>
+
+            <p>By the time you see the filing, the market has moved. The bank announced capital stress. The stock is down 18%. The senator's exit was perfectly timed.</p>
+
+            <p>You look at the disclosure date: "Transaction Date: January 15." Six weeks of lead time. Gone.</p>
+
+            <p style="font-size: 20px; font-weight: 600; margin: calc(var(--grid-base) * 5) 0;">This is Congressional Alpha.</p>
+
+            <h2>The STOCK Act Timeline</h2>
+
+            <p>The STOCK Act (Stop Trading on Congressional Knowledge Act) requires members of Congress to disclose stock trades within 30-45 days of the transaction.</p>
+
+            <p>Here's what that means in practice:</p>
+
+            <ul>
+                <li><strong>Day 0:</strong> Congressional member executes trade based on committee briefings, policy developments, or regulatory insight</li>
+                <li><strong>Days 1-45:</strong> You have no visibility into the transaction</li>
+                <li><strong>Day 30-45:</strong> STOCK Act disclosure filed with House Clerk or Senate</li>
+                <li><strong>Day 45+:</strong> You see the trade — after the information has already moved markets</li>
+            </ul>
+
+            <p>The average disclosure lag is <strong>6.2 months</strong> from transaction date to when retail investors become aware through aggregated databases.</p>
+
+            <p>By then, the alpha is gone.</p>
+
+            <div class="callout">
+                Congressional members don't have insider information. They have policy context that retail investors get 6 months late.
+            </div>
+
+            <h2>Why Congressional Trades Matter</h2>
+
+            <p>Congressional members sit on committees with direct oversight of specific industries:</p>
+
+            <ul>
+                <li><strong>Banking Committee:</strong> Receives confidential briefings on financial institution stress, regulatory changes, capital requirement adjustments</li>
+                <li><strong>Energy & Commerce:</strong> Early visibility into healthcare policy, pharmaceutical regulations, energy infrastructure decisions</li>
+                <li><strong>Armed Services:</strong> Defense budget allocations, contractor awards, procurement policy shifts</li>
+                <li><strong>Agriculture:</strong> Crop insurance policy, trade negotiations, agricultural subsidies</li>
+            </ul>
+
+            <p>These aren't insider tips. These are <strong>policy-informed perspectives</strong> that come from direct exposure to regulatory developments months before public announcement.</p>
+
+            <p>When a Banking Committee member divests from regional banks, they're not trading on material non-public information. They're acting on <strong>Committee Intelligence Signals</strong> — regulatory trajectory insights that won't be public for months.</p>
+
+            <h2>The Committee Intelligence Signal</h2>
+
+            <p>Here's the pattern we observe across congressional disclosures:</p>
+
+            <p><strong>Layer 1 — Committee Assignment:</strong> Member sits on committee with oversight authority over specific sector</p>
+
+            <p><strong>Layer 2 — Concentrated Trading:</strong> Multiple trades in the same sector within short timeframe</p>
+
+            <p><strong>Layer 3 — Directional Consistency:</strong> All trades move in same direction (all buys or all sells)</p>
+
+            <p><strong>Layer 4 — Cross-Member Convergence:</strong> Multiple committee members execute similar trades around same time</p>
+
+            <p>When all four layers align, you have a <strong>Committee Intelligence Signal</strong>.</p>
+
+            <p>Example from 2023:</p>
+
+            <p><strong>January-February 2023:</strong> Five members of the House Financial Services Committee divest regional bank holdings. Transactions spread across 6 weeks. All sells. Zero buys.</p>
+
+            <p><strong>March 2023:</strong> Silicon Valley Bank collapses. Regional bank sector enters crisis.</p>
+
+            <p><strong>STOCK Act disclosures:</strong> Filed between February 28 - March 30. Most appear <strong>after</strong> the collapse became public.</p>
+
+            <p>The trades happened <strong>before</strong> public awareness. The disclosures appeared <strong>after</strong>. The Committee Intelligence Signal was visible in real-time to anyone monitoring STOCK Act filings daily.</p>
+
+            <h2>How to Extract Congressional Alpha</h2>
+
+            <p>Most investors look at congressional trades wrong. They see a single trade and try to copy it.</p>
+
+            <p>That's not how Congressional Alpha works.</p>
+
+            <p>The signal isn't in individual trades. The signal is in <strong>patterns across committee members over time</strong>.</p>
+
+            <p>Here's the methodology:</p>
+
+            <p><strong>Step 1: Map Committee Assignments to Sectors</strong></p>
+
+            <p>Banking Committee → Financial institutions, fintech, payment processors<br>
+Energy & Commerce → Healthcare, pharma, biotech, energy infrastructure<br>
+Agriculture → AgTech, crop insurance, food processing, agricultural commodities</p>
+
+            <p><strong>Step 2: Monitor Committee Member Trades Daily</strong></p>
+
+            <p>Don't wait for aggregated databases. Pull STOCK Act filings directly from House Clerk and Senate websites as they're filed.</p>
+
+            <p>Most retail investors see these trades 3-6 months late through third-party services. Daily monitoring gives you the 6.2-month advantage back.</p>
+
+            <p><strong>Step 3: Identify Cross-Member Convergence</strong></p>
+
+            <p>When three or more committee members execute similar trades in the same sector within a 30-day window, you have convergence.</p>
+
+            <p>Single member selling bank stock = noise.<br>
+Three Banking Committee members selling bank stock within 4 weeks = Committee Intelligence Signal.</p>
+
+            <p><strong>Step 4: Triangulate with Other Government Data</strong></p>
+
+            <p>Congressional trades are <strong>one signal</strong> in a multi-source intelligence framework:</p>
+
+            <ul>
+                <li>FDIC call reports showing sector stress</li>
+                <li>SEC 13F showing institutional positioning changes</li>
+                <li>Form 4 showing executive insider activity</li>
+                <li>Congressional STOCK Act showing policy-informed divestment</li>
+            </ul>
+
+            <p>When all four converge — FDIC stress + institutional exit + insider selling + congressional divestment — you have <strong>triple-verified conviction</strong> before rating agencies or public markets acknowledge the problem.</p>
+
+            <div class="highlight-box">
+                <strong>Congressional Alpha Formula:</strong> Committee assignment + trade concentration + directional consistency + cross-member convergence + triangulation with FDIC/13F/Form 4 = Pre-headline conviction with 6-month lead time.
+            </div>
+
+            <h2>The Policy Monetization Index</h2>
+
+            <p>Some congressional trades are more valuable than others.</p>
+
+            <p>A senator selling consumer staples = low signal. Anyone can sell Procter & Gamble.</p>
+
+            <p>A Banking Committee chair selling a specific regional bank 6 weeks before capital stress becomes public = high signal.</p>
+
+            <p>We built the <strong>Policy Monetization Index</strong> to score congressional trades based on:</p>
+
+            <ul>
+                <li><strong>Committee relevance:</strong> How directly does the member's committee oversee this sector?</li>
+                <li><strong>Position specificity:</strong> Broad ETF or specific company ticker?</li>
+                <li><strong>Transaction timing:</strong> Clustered with other member trades or isolated?</li>
+                <li><strong>Sector materiality:</strong> How much regulatory/policy impact affects this industry?</li>
+            </ul>
+
+            <p>High-scoring trades get flagged for triangulation against FDIC, 13F, and Form 4 data. Low-scoring trades are filtered out as noise.</p>
+
+            <p>This is how you extract signal from 15,000+ congressional transactions per year.</p>
+
+            <h2>Why This Isn't Insider Trading</h2>
+
+            <p>Congressional members aren't trading on material non-public information. They're trading on <strong>policy context</strong>.</p>
+
+            <p>They attend committee briefings. They hear regulatory proposals. They understand legislative trajectory.</p>
+
+            <p>None of this is insider information about specific companies. It's <strong>directional insight into regulatory environments</strong> that will affect entire sectors.</p>
+
+            <p>When Banking Committee members divest from regional banks, they're not shorting based on a specific bank's financials. They're repositioning based on <strong>regulatory scrutiny they see coming</strong>.</p>
+
+            <p>This is legal. This is public (eventually). And this is <strong>extractable by anyone willing to monitor STOCK Act filings daily rather than quarterly</strong>.</p>
+
+            <h2>The 6.2-Month Advantage</h2>
+
+            <p>Here's the timeline gap:</p>
+
+            <p><strong>Congressional member:</strong> Trades on policy context (Day 0)</p>
+
+            <p><strong>STOCK Act disclosure:</strong> Filed 30-45 days later (Day 30-45)</p>
+
+            <p><strong>Aggregated databases:</strong> Update quarterly, 3-6 months after transaction (Day 90-180)</p>
+
+            <p><strong>Retail investors using aggregators:</strong> See trade 6.2 months after it happened, on average</p>
+
+            <p><strong>HIVE Sovereign:</strong> Daily ingestion from House Clerk and Senate sources, indexed within 24 hours of filing</p>
+
+            <p>The 6.2-month gap is real. It's not insider information. It's just <strong>faster access to public data</strong>.</p>
+
+            <p>Most investors don't monitor STOCK Act filings daily because it's infrastructure-heavy. You need to:</p>
+            <ul>
+                <li>Pull from House Clerk and Senate websites separately</li>
+                <li>Parse inconsistent filing formats</li>
+                <li>Map members to committee assignments</li>
+                <li>Track transaction patterns over time</li>
+                <li>Triangulate with other government data sources</li>
+            </ul>
+
+            <p>This is exactly the infrastructure HIVE Sovereign built.</p>
+
+            <p>Because Congressional Alpha isn't about copying trades. It's about <strong>identifying Committee Intelligence Signals before markets price them in</strong>.</p>
+
+            <div class="cta-box">
+                <h3>See Congressional Alpha in Action</h3>
+                <p>Download the Congressional Alpha sample brief showing how committee assignment, trade clustering, and cross-source triangulation identify conviction signals 6 months before retail awareness.</p>
+                <a href="/pricing">Download sample briefs</a>
+            </div>
+        </div>
+    </article>
+
+    <section class="next-article">
+        <p>NEXT WEEK · MARCH 10, 2026</p>
+        <h3>Multi-Source Triangulation</h3>
+        <p class="subtitle">When three independent sources confirm the same signal</p>
+        <a href="/newsletter">← Back to all newsletters</a>
+    </section>
+
+    <footer><p>© 2026 Acclivity Ventures LLC. All rights reserved.</p></footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileNav').classList.toggle('mobile-open');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('mobile-open');
+            });
+        });
+    </script>
+</body>
+</html>

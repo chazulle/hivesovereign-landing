@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware-Notarized Provenance — HIVE Sovereign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-900: #0A1628; --navy-700: #1C3A5C; --teal-500: #00D9C0; --teal-600: #00B3A0;
+            --cream-50: #FDFBF7; --cream-100: #F8F4EC; --gray-400: #9CA3AF; --gray-600: #4B5563;
+            --font-display: 'Archivo', sans-serif; --font-mono: 'JetBrains Mono', monospace; --grid-base: 8px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-display); background: var(--cream-50); color: var(--navy-900); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(10, 22, 40, 0.08); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: calc(var(--grid-base) * 3) calc(var(--grid-base) * 6); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--navy-900); letter-spacing: -0.02em; text-decoration: none; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--navy-900); margin: 5px 0; }
+        .nav-links { display: flex; gap: calc(var(--grid-base) * 5); align-items: center; }
+        .nav-links a { color: var(--navy-700); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--teal-600); }
+        .nav-cta { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 1.5) calc(var(--grid-base) * 3); border-radius: 6px; font-weight: 600; }
+        .nav-cta:hover { background: var(--teal-600); color: var(--navy-900); }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream-50); flex-direction: column; padding: calc(var(--grid-base) * 3); gap: calc(var(--grid-base) * 3); border-bottom: 1px solid rgba(10, 22, 40, 0.08); box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1); }
+            .nav-links.mobile-open { display: flex !important; }
+            .nav-links a { text-align: center; padding: calc(var(--grid-base) * 2); }
+        }
+        .hero { padding: 140px calc(var(--grid-base) * 6) 40px; max-width: 700px; margin: 0 auto; }
+        .hero a { font-family: var(--font-mono); font-size: 13px; color: var(--teal-600); text-decoration: none; letter-spacing: 0.05em; }
+        .hero-meta { font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin: calc(var(--grid-base) * 3) 0 calc(var(--grid-base) * 2); }
+        .hero h1 { font-size: clamp(36px, 5vw, 48px); font-weight: 900; line-height: 1.15; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); letter-spacing: -0.02em; }
+        .hero p { font-size: 20px; line-height: 1.6; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 4); }
+        .hero-divider { padding: calc(var(--grid-base) * 2) 0; border-top: 1px solid var(--gray-400); border-bottom: 1px solid var(--gray-400); }
+        .hero-divider p { font-size: 14px; color: var(--gray-600); margin: 0; }
+        article { background: var(--cream-50); padding: 60px calc(var(--grid-base) * 6) 80px; }
+        .article-content { max-width: 700px; margin: 0 auto; font-size: 18px; line-height: 1.8; color: var(--navy-900); }
+        .article-content p { margin-bottom: calc(var(--grid-base) * 4); }
+        .article-content h2 { font-size: 28px; font-weight: 700; margin: calc(var(--grid-base) * 6) 0 calc(var(--grid-base) * 3); color: var(--navy-900); }
+        .article-content ul { margin-bottom: calc(var(--grid-base) * 4); padding-left: calc(var(--grid-base) * 4); }
+        .article-content li { margin-bottom: calc(var(--grid-base) * 2); }
+        .article-content strong { font-weight: 600; }
+        .callout { margin: calc(var(--grid-base) * 5) 0; padding: calc(var(--grid-base) * 3); background: var(--cream-100); border-left: 4px solid var(--teal-500); font-style: italic; color: var(--gray-600); }
+        .highlight-box { margin: calc(var(--grid-base) * 5) 0; padding: calc(var(--grid-base) * 3); background: white; border: 1px solid var(--gray-400); border-radius: 8px; }
+        .cta-box { margin-top: calc(var(--grid-base) * 8); padding: calc(var(--grid-base) * 5); background: var(--teal-500); border-radius: 12px; }
+        .cta-box h3 { font-size: 24px; font-weight: 700; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2); }
+        .cta-box p { font-size: 16px; line-height: 1.6; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 3); }
+        .cta-box a { display: inline-block; padding: 14px 28px; background: var(--navy-900); color: var(--cream-50); border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; }
+        .next-article { background: var(--cream-100); padding: 60px calc(var(--grid-base) * 6); border-top: 1px solid var(--gray-400); text-align: center; }
+        .next-article p { font-family: var(--font-mono); font-size: 13px; color: var(--gray-600); letter-spacing: 0.05em; margin-bottom: calc(var(--grid-base) * 2); }
+        .next-article h3 { font-size: 24px; font-weight: 600; color: var(--navy-900); margin-bottom: calc(var(--grid-base) * 2); }
+        .next-article .subtitle { font-size: 16px; color: var(--gray-600); margin-bottom: calc(var(--grid-base) * 3); }
+        .next-article a { color: var(--teal-600); text-decoration: none; font-weight: 500; }
+        footer { background: var(--navy-900); color: var(--cream-50); padding: calc(var(--grid-base) * 8) calc(var(--grid-base) * 6); text-align: center; }
+        footer p { font-size: 14px; color: rgba(253, 251, 247, 0.7); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">HIVE SOVEREIGN</a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="mobileNav">
+                <a href="/pricing">Pricing</a>
+                <a href="/newsletter">Newsletter</a>
+                <a href="/#apply" class="nav-cta">Get started</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <a href="/newsletter">← Back to Newsletter</a>
+        <div class="hero-meta">ISSUE #6 · FEBRUARY 10, 2026</div>
+        <h1>Hardware-Notarized Provenance</h1>
+        <p>Why Software Attestation Isn't Enough</p>
+        <div class="hero-divider"><p>Reading time: 11 minutes</p></div>
+    </section>
+
+    <article>
+        <div class="article-content">
+            <p>Most vendors sign documents with software. A cloud service. A script. A timestamp API running on AWS.</p>
+
+            <p>When you verify their signature, you're verifying that <strong>some software process</strong> produced a hash at some point in time.</p>
+
+            <p>Here's the problem: software can be compromised. Cloud credentials can be stolen. Timestamps can be backdated. Private keys stored in software can be extracted.</p>
+
+            <p>When your lawyer asks "can you prove this signature wasn't forged?", software attestation gives you probabilistic confidence, not absolute certainty.</p>
+
+            <p style="font-size: 20px; font-weight: 600; margin: calc(var(--grid-base) * 5) 0;">This is why HIVE Sovereign uses hardware-notarized provenance.</p>
+
+            <h2>The Software Attestation Problem</h2>
+
+            <p>Software-based document signing relies on trust assumptions:</p>
+
+            <ul>
+                <li><strong>Trust the cloud provider</strong> — Your signing service runs on AWS, Azure, or GCP</li>
+                <li><strong>Trust the key storage</strong> — Private keys live in software vaults, HSMs, or key management services</li>
+                <li><strong>Trust the timestamp authority</strong> — Some third-party service attests to when the signature was generated</li>
+                <li><strong>Trust the vendor</strong> — They promise they didn't backdate signatures or sign fraudulent documents</li>
+            </ul>
+
+            <p>For most use cases, this is fine. For fiduciary-grade intelligence, it's insufficient.</p>
+
+            <p>Because when a regulator questions your evidence, "we used a cloud signing service" isn't defensible. You're stacking trust assumptions on top of trust assumptions.</p>
+
+            <div class="callout">
+                Software attestation: "Trust that our software wasn't compromised." Hardware attestation: "Here's physical proof from a device you can verify."
+            </div>
+
+            <h2>How Hardware Attestation Works</h2>
+
+            <p>At HIVE Sovereign, every document is signed by a dedicated hardware node — a physical device whose only function is cryptographic signing.</p>
+
+            <p>Here's the architecture:</p>
+
+            <p><strong>Isolated Network Segment (VLAN30):</strong> The signing node sits on its own network. No internet access. No connection to production systems. Air-gapped from external networks.</p>
+
+            <p><strong>Dedicated Hardware:</strong> One device. One job. It doesn't run databases, web servers, or application logic. It signs documents.</p>
+
+            <p><strong>Physical Key Storage:</strong> The private signing key lives on this device and never leaves it. Not in a software vault. Not in cloud key management. On the hardware.</p>
+
+            <p><strong>mTLS Authentication:</strong> Before the signing node will sign anything, it validates the request using mutual TLS certificates from our internal certificate authority. Software processes can't forge these certificates without physical access to our infrastructure.</p>
+
+            <p>When you verify a HIVE Sovereign signature, you're not verifying that some cloud process ran correctly. You're verifying that <strong>this specific physical device</strong>, in <strong>this specific network segment</strong>, produced this signature.</p>
+
+            <h2>Why This Is Harder to Replicate</h2>
+
+            <p>Software signing scales infinitely. Spin up containers. Deploy to the cloud. Sign millions of documents per second.</p>
+
+            <p>Hardware signing doesn't scale like software. It requires:</p>
+
+            <ul>
+                <li><strong>Physical infrastructure</strong> — Actual devices, network switches, isolated VLANs</li>
+                <li><strong>Certificate authority hierarchy</strong> — Internal CA issuing mTLS certificates for signing authorization</li>
+                <li><strong>Operational security</strong> — Physical access controls, network segmentation, audit logging</li>
+                <li><strong>Long-term maintenance</strong> — Hardware lifecycle management, key rotation procedures, security hardening</li>
+            </ul>
+
+            <p>This is expensive. This is complex. This doesn't scale to millions of documents.</p>
+
+            <p>But it produces <strong>evidence that withstands legal scrutiny</strong> in ways software attestation cannot.</p>
+
+            <h2>The Attack Surface Difference</h2>
+
+            <p>Let's compare attack surfaces:</p>
+
+            <p><strong>Software signing (cloud-based):</strong></p>
+            <ul>
+                <li>Compromise the cloud provider</li>
+                <li>Steal API credentials</li>
+                <li>Extract keys from software HSM</li>
+                <li>Exploit the signing application</li>
+                <li>Backdoor the timestamp service</li>
+                <li>Social engineer cloud account access</li>
+            </ul>
+
+            <p><strong>Hardware signing (air-gapped):</strong></p>
+            <ul>
+                <li>Gain physical access to our facility</li>
+                <li>Penetrate the isolated network segment</li>
+                <li>Compromise the signing node itself</li>
+                <li>Forge mTLS certificates from our internal CA</li>
+            </ul>
+
+            <p>The software attack surface is measured in <strong>internet-accessible endpoints</strong>. The hardware attack surface is measured in <strong>physical security perimeters</strong>.</p>
+
+            <p>One is vulnerable to remote compromise. The other requires physical intrusion.</p>
+
+            <div class="highlight-box">
+                <strong>Defensibility Math:</strong> Software attestation = probabilistic confidence based on trust chains. Hardware attestation = cryptographic proof anchored to physical infrastructure.
+            </div>
+
+            <h2>What This Means for You</h2>
+
+            <p>When compliance asks "how do you know this document is authentic?", you have two answers:</p>
+
+            <p><strong>Software attestation:</strong> "The vendor's cloud signing service generated this hash, and their third-party timestamp authority says it was created on this date."</p>
+
+            <p><strong>Hardware attestation:</strong> "This signature was generated by a dedicated hardware device on an isolated network segment, authenticated via mTLS certificates from their internal certificate authority, with a cryptographic chain proving the signing event occurred on this specific hardware at this specific time."</p>
+
+            <p>One answer relies on vendor promises. The other answer presents <strong>verifiable infrastructure</strong>.</p>
+
+            <p>In regulatory review, LP litigation, or compliance audit — verifiable infrastructure is defensible. Vendor promises are not.</p>
+
+            <h2>The Future: Hardware Security Modules</h2>
+
+            <p>Our current architecture uses a dedicated signing node with physical key storage. The next evolution is <strong>hardware security modules (HSMs)</strong> — tamper-resistant devices designed specifically for cryptographic operations.</p>
+
+            <p>HSMs add another layer: even with physical access to the device, extracting the private key is computationally infeasible. The key operations happen inside the HSM chip itself, never exposed to the operating system.</p>
+
+            <p>This is the ultimate endpoint for hardware-notarized provenance: cryptographic operations that are <strong>mathematically provable and physically secured</strong>.</p>
+
+            <p>We're moving toward this architecture because our buyers don't need "good enough" attestation. They need <strong>legally defensible proof</strong>.</p>
+
+            <h2>Why Most Vendors Don't Do This</h2>
+
+            <p>Building hardware signing infrastructure for intelligence briefs is economically irrational — unless your buyers actually face regulatory scrutiny.</p>
+
+            <p>For generic market intelligence, software signing is fine. For compliance-driven intelligence, it's insufficient.</p>
+
+            <p>HIVE Sovereign exists in that second category. We're not selling to analysts doing background research. We're selling to fiduciaries making decisions they might have to defend in court.</p>
+
+            <p>That's why we built infrastructure most vendors would consider overkill.</p>
+
+            <p>Because when the SEC asks you to prove your sources, "the vendor signed it with a cloud API" doesn't hold up.</p>
+
+            <p>"The vendor signed it with a dedicated hardware device on an isolated network, and here's the cryptographic proof" does.</p>
+
+            <div class="cta-box">
+                <h3>See Hardware Attestation in Action</h3>
+                <p>Download a HIVE Sovereign brief and scan the QR code. You'll see the hardware signature details, certificate chain, and verification proof. This is what hardware-notarized provenance looks like.</p>
+                <a href="/pricing">Download sample briefs</a>
+            </div>
+        </div>
+    </article>
+
+    <section class="next-article">
+        <p>NEXT WEEK · FEBRUARY 17, 2026</p>
+        <h3>The Fiduciary Shield</h3>
+        <p class="subtitle">Defending decisions when your LP sues</p>
+        <a href="/newsletter">← Back to all newsletters</a>
+    </section>
+
+    <footer><p>© 2026 Acclivity Ventures LLC. All rights reserved.</p></footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileNav').classList.toggle('mobile-open');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileNav').classList.remove('mobile-open');
+            });
+        });
+    </script>
+</body>
+</html>
