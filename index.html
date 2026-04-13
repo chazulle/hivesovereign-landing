@@ -1557,11 +1557,11 @@
                 } else {
                     const error = await response.json();
                     console.error('Supabase error:', error);
-                    alert('There was an error submitting your order. Please try again or email eric@acclivityventures.net directly.');
+                    alert('There was an error submitting your order. Please try again.');
                 }
             } catch (error) {
                 console.error('Submission error:', error);
-                alert('There was an error submitting your order. Please try again or email eric@acclivityventures.net directly.');
+                alert('There was an error submitting your order. Please try again.');
             } finally {
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
@@ -1604,11 +1604,11 @@
                 } else {
                     const error = await response.json();
                     console.error('Supabase error:', error);
-                    alert('There was an error submitting your application. Please try again or email eric@acclivityventures.net directly.');
+                    alert('There was an error submitting your application. Please try again.');
                 }
             } catch (error) {
                 console.error('Submission error:', error);
-                alert('There was an error submitting your application. Please try again or email eric@acclivityventures.net directly.');
+                alert('There was an error submitting your application. Please try again.');
             } finally {
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
